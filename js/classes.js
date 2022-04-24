@@ -27,8 +27,7 @@ class Sprite {
             )
     }
 
-    update(){
-        this.draw()
+    animateFrame(){
         this.framesElapsed++
 
         if(this.framesElapsed % this.framesHold === 0){
@@ -39,6 +38,11 @@ class Sprite {
                 this.frameCurrent = 0
             }
          }
+    }
+
+    update(){
+        this.draw()
+        this.animateFrame()
     }
 }
 
@@ -87,6 +91,8 @@ class Fighter extends Sprite{
 
     update(){
         this.draw()
+        this.animateFrame()
+        
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y
         
